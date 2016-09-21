@@ -14,7 +14,7 @@ GET:localhost:8080/rest/client/{id}
     localhost:8080/rest/clManagers
     localhost:8080/rest/supManager/{id}
     localhost:8080/rest/supManagers
-    localhost:8080/rest/godd/{id}
+    localhost:8080/rest/good/{id}
     localhost:8080/rest/goods
 PUT:-//-
 DELETE:-//-

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="CRM_SRMRestAPI:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/CRM_SRMRestAPI_war</output-path>
+    <root id="archive" name="CRM_SRMRestAPI_war.war">
+      <element id="artifact" artifact-name="CRM_SRMRestAPI:war exploded" />
+    </root>
+  </artifact>
+</component>

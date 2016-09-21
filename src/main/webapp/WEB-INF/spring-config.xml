@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="edu.bsuir.rest.controller" />
+    <mvc:annotation-driven />
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/crm_srm_system" />
+        <property name="username" value="root" />
+        <property name="password" value="Krest78223460" />
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>edu.bsuir.rest.model.Buy</value>
+                <value>edu.bsuir.rest.model.ClManager</value>
+                <value>edu.bsuir.rest.model.Client</value>
+                <value>edu.bsuir.rest.model.Good</value>
+                <value>edu.bsuir.rest.model.Sell</value>
+                <value>edu.bsuir.rest.model.SupManager</value>
+                <value>edu.bsuir.rest.model.Supplier</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/crm_srm_system</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="txManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+    <bean id="clientDao" class="edu.bsuir.rest.dao.ClientDAO" />
+    <bean id="supplierDao" class="edu.bsuir.rest.dao.SupplierDAO" />
+    <bean id="supManagerDao" class="edu.bsuir.rest.dao.SupManagerDAO" />
+    <bean id="sellDao" class="edu.bsuir.rest.dao.SellDAO" />
+    <bean id="buyDao" class="edu.bsuir.rest.dao.BuyDAO" />
+    <bean id="goodDao" class="edu.bsuir.rest.dao.GoodDAO" />
+    <bean id="clManagerDao" class="edu.bsuir.rest.dao.ClManagerDAO" />
+
+    <bean id="clientService" class="edu.bsuir.rest.services.impl.ClientServiceImpl" />
+    <bean id="buyService" class="edu.bsuir.rest.services.impl.BuyServiceImpl" />
+    <bean id="clManagerService" class="edu.bsuir.rest.services.impl.ClManagerServiceImpl" />
+    <bean id="goodService" class="edu.bsuir.rest.services.impl.GoodServiceImpl" />
+    <bean id="sellService" class="edu.bsuir.rest.services.impl.SellServiceImpl" />
+    <bean id="supManagerService" class="edu.bsuir.rest.services.impl.SupManagerImpl" />
+    <bean id="supplierService" class="edu.bsuir.rest.services.impl.SupplierServiceImpl" />
+
+</beans>

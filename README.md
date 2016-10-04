@@ -1,6 +1,8 @@
 # CRM_SRMRestAPI
 CRM/SRM system development project (made by BSUIR students).
 
+SQL script: src/main/resources/db_scheme.sql
+
 Mapping:
 
 GET:

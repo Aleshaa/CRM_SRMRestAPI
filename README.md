@@ -3,6 +3,8 @@ CRM/SRM system development project (made by BSUIR students).
 
 SQL script: src/main/resources/db_scheme.sql
 
+WAR: out/artifacts...
+
 Mapping:
 
 GET:
